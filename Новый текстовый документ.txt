@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heary of Ukraine Forum</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #0057b7;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .post-form input, .post-form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .post-form button {
+      background-color: #ffd700;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .post {
+      border-bottom: 1px solid #ddd;
+      padding: 1rem 0;
+    }
+    .post h3 {
+      margin: 0;
+    }
+    .post p {
+      margin: 0.5rem 0 0 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Heary of Ukraine Forum</h1>
+  </header>
+  <div class="container">
+    <div class="post-form">
+      <input type="text" id="username" placeholder="Ваше ім'я">
+      <textarea id="message" placeholder="Ваше повідомлення"></textarea>
+      <button onclick="addPost()">Опублікувати</button>
+    </div>
+    <div id="posts"></div>
+  </div>
+
+  <script>
+    function addPost() {
+      const username = document.getElementById('username').value;
+      const message = document.getElementById('message').value;
+      if (!username || !message) return alert('Будь ласка, заповніть усі поля.');
+
+      const postDiv = document.createElement('div');
+      postDiv.classList.add('post');
+      postDiv.innerHTML = `<h3>${username}</h3><p>${message}</p>`;
+
+      document.getElementById('posts').prepend(postDiv);
+
+      document.getElementById('username').value = '';
+      document.getElementById('message').value = '';
+    }
+  </script>
+</body>
+</html>
